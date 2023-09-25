@@ -6,6 +6,52 @@ Greetings, Huffoor! This document will guide you through the steps to solve this
 
 In this challenge you must complete a function with the goal of correctly setting up the memory in the most gas efficient way. You do not need to write `MAIN()` or any other functions, this is strictly an exercise in memory building.
 
+The memory that you need to setup is two words between 0x00 and 0x40. It involves 4 values:
+
+```
+A) uint256(msg.sender (caller))
+B) uint256(keccak hash of msg.sender)
+C) uint256(block.number)
+D) uint256(block.timestamp)
+```
+
+So each is a 32byte word.  Each value can be divided into four 8-byte pieces ("quarters").  So the final memory setup involves stacking different "quarters". Each value is annotated by their letter and the corresponding "quarter" (1-4) starting from left to right.  For example:
+
+```
+A) 0x0000000000000000 0000000034a1d3ff f3958843c43ad80f 30b94c510645c316 // msg.sender
+B) 0xfe2afc3f161bf87c 530b1b36a14b99f2 2e6eb09c76ab0f05 72d39ad6f7b8f784 // hash of msg.sender
+C) 0x0000000000000000 0000000000000000 0000000000000000 000000000093f028 // block number
+D) 0x0000000000000000 0000000000000000 0000000000000000 000000006511c5a6 // block timestamp
+```
+
+The "quarters" are annotated as follows:
+
+```
+A-1 the highest 8 bytes of the msg.sender: 0x0000000000000000
+A-2 the next 8 bytes                     : 0x0000000034a1d3ff
+A-3                                      : 0xf3958843c43ad80f
+A-4                                      : 0x30b94c510645c316
+
+B-1                                      : 0xfe2afc3f161bf87c
+...
+C-4                                      : 0x000000000093f028
+...
+D-4                                      : 0x000000006511c5a6
+```
+
+So with that in mind, the goal of this challenge is to arrange the memory from 0x00 - 0x40 as follows:
+
+```
+0x00: B-1
+0x08: B-2
+0x10: A-2
+0x18: B-1
+0x20: A-4
+0x28: D-4
+0x30: C-4
+0x38: A-3
+ ```
+
 Please note, a fuzz test is included in [Solution.t.sol](test/Solution.t.sol). Your solution must pass this test as well. The script won't prevent you from submitting if the fuzz test fails so beware. Also, please do not alter the `CREATOR` or the `Utils` files.
 
 Yes you can change the `Solution.t.sol` test file as much as you want, it is there to help you and for you to use as you see fit.  It will not affect the outcome or the registration process.
