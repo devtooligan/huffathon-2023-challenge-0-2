@@ -1,0 +1,25 @@
+#include "Utils.huff"
+
+// /* Interface */
+#define function memIt() view returns (bytes32,bytes32)
+
+// /* Methods */
+
+#define macro MAIN() = takes (0) returns (0) {
+
+    // Identify which function is being called.
+    0x00 calldataload 0xE0 shr
+    dup1 __FUNC_SIG(memIt) eq memit jumpi
+    0x00 0x00 revert
+
+    memit:
+        MEMIT()
+        0x40 0x00 return
+}
+
+#define macro REQUIRE() = takes (1) returns (0) {
+    no_fail jumpi
+    0x00 0x00 revert
+    no_fail:
+}
+

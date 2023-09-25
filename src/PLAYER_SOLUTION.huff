@@ -1,0 +1,11 @@
+#include "utils/CREATOR.huff"
+
+#define macro MEMIT() = takes (0) returns (0) {
+    /**
+
+     <<insert solution here>>
+
+    */
+}
+
+
