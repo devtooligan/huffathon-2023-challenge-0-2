@@ -25,4 +25,9 @@ contract SolutionTest is Test, Utils {
     function testSolution() public {
         require(verify(), "Solution failed");
     }
+
+    function testFuzzSolution(address user) public {
+        vm.startPrank(user);
+        require(verify(), "Solution failed");
+    }
 }

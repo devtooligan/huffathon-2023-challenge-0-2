@@ -1,13 +1,16 @@
-# Welcome to Huff Challenge 0.1: Stackoor
+# Welcome to Huff Challenge 0.2: Memory Enjoyoor
 
 Greetings, Huffoor! This document will guide you through the steps to solve this challenge and register your solution.
 
 ## Overview
 
-In this challenge you must complete a function with the goal of correctly setting up the memory in the most gas efficient way. You do not need to write MAIN() or any other functions, this is strictly an exercise in memory building.
+In this challenge you must complete a function with the goal of correctly setting up the memory in the most gas efficient way. You do not need to write `MAIN()` or any other functions, this is strictly an exercise in memory building.
 
-Please note, a fuzz test is included on Solution.t.sol. Your solution must pass this test as well. The script won't prevent you from submitting if the fuzz test fails so beware.  During the human review, the winner's code will be run against that test.
+Please note, a fuzz test is included in [Solution.t.sol](test/Solution.t.sol). Your solution must pass this test as well. The script won't prevent you from submitting if the fuzz test fails so beware. Also, please do not alter the `CREATOR` or the `Utils` files.
 
+Yes you can change the `Solution.t.sol` test file as much as you want, it is there to help you and for you to use as you see fit.  It will not affect the outcome or the registration process.
+
+During the human review, the winner's `PLAYERS_SOLUTION.huff` will be fully tested.
 
 
 ## Getting Started
