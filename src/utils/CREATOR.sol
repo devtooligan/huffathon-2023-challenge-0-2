@@ -15,7 +15,7 @@ library CREATOR {
     // IMPORTANT: CREATOR TO UPDATE THIS!
     // This function returns true or false if the solution is correct.
     // Write logic that will check if the provided solution is correct
-    function verify(address solution) public returns (bool) {
+    function verify(address solution) internal returns (bool) {
         (bytes32 d1_, bytes32 d2_) = IChallenge(solution).memIt();
         uint d1 = uint(d1_);
         uint d2 = uint(d2_);
@@ -46,14 +46,14 @@ library CREATOR {
     // IMPORTANT: CREATOR TO UPDATE THIS!
     // his function should return the number that should reported for gas for the solution.
     // It could be the measurement of a single function call or multiple.
-    function gasReport(address solution) public returns (uint256 gasUsed) {
+    function gasReport(address solution) internal returns (uint256 gasUsed) {
         // add logic to report gas cost of the relevant call or calls to the solution
         uint256 start = gasleft();
         IChallenge(solution).memIt();
         gasUsed = start - gasleft();
     }
 
-    function challengeId() public pure returns (uint8) {
+    function challengeId() internal pure returns (uint8) {
         require(_challengeId != 0xff, "IMPORTANT: CREATOR to update challengeId!");
         return _challengeId;
     }
