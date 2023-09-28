@@ -53,9 +53,6 @@ So with that in mind, the goal of this challenge is to arrange the memory from 0
 0x30: C-4
 0x38: A-3
  ```
-
-Please note, a fuzz test is included in [Solution.t.sol](test/Solution.t.sol). Your solution must pass this test as well. The script won't prevent you from submitting if the fuzz test fails so beware. Also, please do not alter the `CREATOR` or the `Utils` files.
-
 Yes you can change the `Solution.t.sol` test file as much as you want, it is there to help you and for you to use as you see fit.  It will not affect the outcome or the registration process.
 
 During the human review, the winner's `PLAYERS_SOLUTION.huff` will be fully tested.
