@@ -10,7 +10,7 @@ interface IChallenge {
 // ******* This is for use by the challenge creator only!     *******
 // ******* Players do not need to change anything here. *******
 library CREATOR {
-    uint8 internal constant _challengeId = 0x22; // IMPORTANT: CREATOR TO UPDATE THIS!
+    uint8 internal constant _challengeId = 0x99; // IMPORTANT: CREATOR TO UPDATE THIS!
 
     // IMPORTANT: CREATOR TO UPDATE THIS!
     // This function returns true or false if the solution is correct.
